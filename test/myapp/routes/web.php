@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +19,11 @@ Route::get('/', function () {
 });
 
 Route::get('/testA', "TestController@goTestA");
+
+//게시판관련 뷰
+Route::get('/board',"BoardController@board");
+Route::get('/board/create',"BoardController@create");
+Route::get('/board/{id}',"BoardController@boardDetail");
+Route::post('/board',"BoardController@insert");
+Auth::routes();
+
