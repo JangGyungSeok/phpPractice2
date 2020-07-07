@@ -26,4 +26,3 @@ Route::get('/board/create',"BoardController@create");
 Route::get('/board/{id}',"BoardController@boardDetail");
 Route::post('/board',"BoardController@insert");
 Auth::routes();
-
