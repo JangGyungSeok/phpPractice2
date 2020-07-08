@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,33 +15,38 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::get('auth/login',function(){
-    $cridentials = [
-        'email' => 'JKS.google.com',
-        'password' => 'password',
-    ];
-
-    if(! auth()->attempt($cridentials)){
-        return "로그인이 부정확하다.";
-    }
-
-    return redirect('protected');
+Route::get('/testA',function(){
+    return view('testA');
 });
+// Route::get('auth/login',function(){
+//     $cridentials = [
+//         'email' => 'JKS.google.com',
+//         'password' => 'password',
+//     ];
 
-Route::get('protected', function(){
-    dump(session() ->all());
-    if(!auth() ->check()){
-        return "누구세요?";
-    }
+//     if(! auth()->attempt($cridentials)){
+//         return "로그인이 부정확하다.";
+//     }
 
-    return '하이'.auth()->user()->name;
-});
+//     return redirect('protected');
+// });
+// Route::get('auth/logout',function(){
+//     auth() ->logout();
 
-Route::get('auth/logout',function(){
-    auth() ->logout();
+//     return "또봐요";
+// });
+// Route::get('protected', function(){
+//     dump(session() ->all());
+//     if(!auth() ->check()){
+//         return "누구세요?";
+//     }
 
-    return "또봐요";
-});
+//     return '하이'.auth()->user()->name;
+// });
+
+
+
+Auth::routes();

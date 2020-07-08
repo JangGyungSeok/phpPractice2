@@ -25,6 +25,22 @@
 	
 	https://medium.com/sjk5766/docker-container%EC%97%90%EC%84%9C-laravel-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0-cd9ed211927e
 	
+	nginX 설정을 변경할 일이 잦을예정이다.
+	
+	기본적으로 server{}에 해당하는 부분을 설정한다.
+	nginx의 root경로를 해당하는 프로젝트 경로로 변경한다.
+	
+	
+	또한 location / { 속에try_files $uri $uri/ /index.php?$query_string; 을 꼭 추가해야한다.
+	기본 index.php에서 다른 경로를 찾아가기 위함이다.
+	
+	js, css등은 프로젝트의 설정값을 따르기 때문에 별 문제없다.
+
+
+​	
+	Laravel 프로젝트 NginX 서버로 동작하기 (최종)
+	https://medium.com/@koswarabilly/laravel-with-nginx-installation-to-set-up-94eae92e2541
+
 
 ## 3. 프로젝트 생성
 	-- 설명 --
@@ -40,19 +56,21 @@
 	-- 설명 --
 	Laravel은 JavaScript, CSS, Vue.. 등등의 프론트엔드 패키지를 NPM을 사용해 관리한다.
 	(NPM을 설치하지 않을경우 프로젝트 내 프론트엔드 파일에 접근하기 어려울 수 있다.)
-	
-	
-	기존의 front-end 는 laravel/ui로 분리되었고 make:auth는 사라졌다.
-	composer require laravel/ui --dev -> ui를 생성해준다.
-	라라벨 제공 부트스트랩 및 Vue 스캐폴딩은 laravel/ui에 속해있다.
-	
-	
-	-- 명령어 --
-	php artisan ui bootstrap
-	php artisan ui vue
-	php artisan ui react
-	--auth를 붙일수도있다.
-	ui관련 의존성을 추가해주는 부분이다.
+
+
+​	
+​	기존의 front-end 는 laravel/ui로 분리되었고 make:auth는 사라졌다.
+​	composer require laravel/ui --dev -> ui를 생성해준다.
+​	라라벨 제공 부트스트랩 및 Vue 스캐폴딩은 laravel/ui에 속해있다.
+
+
+​	
+​	-- 명령어 --
+​	php artisan ui bootstrap
+​	php artisan ui vue
+​	php artisan ui react
+​	--auth를 붙일수도있다.
+​	ui관련 의존성을 추가해주는 부분이다.
 
 --------------------------------
 ## 환경설정 끝
@@ -90,7 +108,7 @@
 	
 	4. Model Factory (모델팩토리) (더미데이터를 빠르게 만들 수 있는 도구)
 	시더와 비슷하다!
-	
+
 ## 2. Controller 정의
 	Laravel에서는 비즈니스로직을 Controller에 정의한다.
 	보통 DB와의 연결을 통해 데이터를 받아오거나
@@ -110,7 +128,7 @@
 	--resource 옵션을 주고 새로운 컨트롤러를 만들자.
 	URL정의 규약에 따라 자동으로 생성해주는 기능이다.
 ## 6. 인증(authentication) & 인가(authorization)
-	
+
 
 ## *참고사항
 	1. 스케줄링!!
